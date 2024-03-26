@@ -1,0 +1,26 @@
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div th:each="movie: ${movies}" class="card mt-2 mb-2">
+    <div class="card-body bg-dark text-white rounded">
+        <div class="d-flex">
+            <img th:src="@{${movie.posterUrl()}}" alt="movie poster" width="300" height="450">
+            <div>
+                <h5 class="card-title mb-0" th:text="${movie.title()}"/>
+                <p class="card-text text-primary" th:text="${movie.releaseYear()}"/>
+            </div>
+        </div>
+        <p class="card-text mt-3" th:text="${movie.plot()}"/>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <button onclick="location.href='/';" class="btn btn-outline-primary"><i class="bi bi-heart"></i> Buy Tickets</button>
+        </div>
+    </div>
+</div>
+<div class="card" id="replaceMe">
+    <button
+            th:hx-get="${link}"
+            hx-target="#replaceMe"
+            hx-swap="outerHTML"
+            class="btn btn-primary btn-sm">Load More...
+        <img class="htmx-indicator"src="/spinner.gif" alt="spinner.gif"/>
+    </button>
+</div>
+</html>

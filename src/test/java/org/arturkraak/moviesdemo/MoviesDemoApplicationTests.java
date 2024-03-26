@@ -1,0 +1,13 @@
+package org.arturkraak.moviesdemo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MoviesDemoApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
