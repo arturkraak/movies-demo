@@ -49,8 +49,8 @@ public class DataLoader implements CommandLineRunner {
     private Movie createMovieFromNode(JsonNode movie) {
         int id = movie.get("id").asInt();
         String title = movie.get("title").asText();
-        String releaseYear = movie.get("year").asText();
-        String runtime = movie.get("runtime").asText();
+        int releaseYear = Integer.parseInt(movie.get("year").asText());
+        int runtime = Integer.parseInt(movie.get("runtime").asText());
         String actors = movie.get("actors").asText();
         String plot = movie.get("plot").asText();
         String posterUrl = movie.get("posterUrl").asText();
@@ -60,10 +60,6 @@ public class DataLoader implements CommandLineRunner {
     }
 
 
-//     "genres": [
-//             "Comedy",
-//             "Fantasy"
-//             ],
     private String arrayToCSV(JsonNode node, String key) {
         JsonNode array = node.get(key);
         StringBuilder sb = new StringBuilder();
