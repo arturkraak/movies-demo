@@ -12,5 +12,6 @@
 | [Thymeleaf](https://www.thymeleaf.org/) | 3.1.2 | HTML Templating for Java |
 | [HTMX](https://htmx.org/) | 1.9.11 | Frontend Framework |
 
-
+### Live Demo running on a Raspberry Pi 4 (using nginx proxy):
+### [https://arturkraak.duckdns.org/cinema/](https://arturkraak.duckdns.org/cinema/)
 </div>
