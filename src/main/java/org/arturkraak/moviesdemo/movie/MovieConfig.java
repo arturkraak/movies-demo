@@ -1,9 +1,8 @@
-package org.arturkraak.moviesdemo;
+package org.arturkraak.moviesdemo.movie;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.arturkraak.moviesdemo.model.Movie;
-import org.arturkraak.moviesdemo.movie.MovieRepository;
 import org.springframework.asm.TypeReference;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,14 +14,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class MovieConfig implements CommandLineRunner {
 
     private final ObjectMapper objectMapper;
     private final MovieRepository movieRepository;
 
-    public DataLoader(ObjectMapper objectMapper, MovieRepository movieRepository) {
+
+    public static List<String> genres;
+
+    public MovieConfig(ObjectMapper objectMapper, MovieRepository movieRepository) {
         this.objectMapper = objectMapper;
         this.movieRepository = movieRepository;
+    }
+
+    public static List<String> getGenres() {
+        return genres;
     }
 
     @Override
@@ -36,7 +42,8 @@ public class DataLoader implements CommandLineRunner {
             throw new RuntimeException("Failed to read JSON data", e);
         }
 
-        JsonNode movies = getMovies(json);
+        JsonNode movies = getMovies(json, "movies");
+        genres = getGenresList(json);
         for(JsonNode movie : movies) {
             System.out.println(movie);
             moviesList.add(createMovieFromNode(movie));
@@ -56,7 +63,7 @@ public class DataLoader implements CommandLineRunner {
         String posterUrl = movie.get("posterUrl").asText();
         String genres = arrayToCSV(movie, "genres");
 
-        return new Movie(id, title, releaseYear, runtime, genres, actors, plot, posterUrl, null);
+        return new Movie(id, title, releaseYear, runtime, genres, actors, plot, posterUrl);
     }
 
 
@@ -70,9 +77,16 @@ public class DataLoader implements CommandLineRunner {
         return sb.toString();
     }
 
-    private JsonNode getMovies(JsonNode json) {
+    private JsonNode getMovies(JsonNode json, String key) {
         return Optional.ofNullable(json)
-                .map(j -> j.get("movies"))
+                .map(j -> j.get(key))
                 .orElseThrow(() -> new IllegalArgumentException("Invalid JSON Object"));
     }
+
+    public List<String> getGenresList(JsonNode json) throws JsonProcessingException {
+        System.out.println("### " + json.get("genres"));
+        return new ObjectMapper().convertValue(json.get("genres"), ArrayList.class);
+    }
+
+
 }

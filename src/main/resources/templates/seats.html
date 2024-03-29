@@ -1,0 +1,31 @@
+<div th:id="'replaceSeats'+${seatObject.seed}">
+    <div class="d-flex justify-content-center text-center">
+        <h3 class="text-primary m-2">Tickets:</h3>
+        <form method="POST" id="ticket-form" hx-post="/cinema/find" th:object="${seatObject}" th:hx-target="'#replaceSeats'+${seatObject.seed}" hx-swap="outerHTML" class="input-group">
+            <input id="ticket" type="text" th:field="*{tickets}" class="form-control rounded" th:placeholder="${seatObject.tickets}" aria-label="tickets" aria-describedby="search-addon" style="max-width: 100px" >
+            <button type="submit" class="btn btn-outline-danger" data-mdb-ripple-init>find</button>
+            <input class="form-control" type="hidden" th:field="*{seed}">
+        </form>
+    </div>
+    <div class="mt-2 mb-2 bg-black">
+        <div th:each="row, i: ${seats}" class="d-flex flex-wrap justify-content-center text-center">
+            <div class="m-1">
+                <h2 th:text="${i.size - i.index}" class="card-text text-light"></h2>
+            </div>
+            <div th:each="seat, j : ${row}" class="m-1">
+                <div th:if="${seat} == '0'" class="card bg-success" style="min-width: 30px">
+                    <h2 th:text="${j.index} + 1" class="card-text text-light"></h2>
+                </div>
+                <div th:if="${seat} == '1'" class="card bg-dark" style="min-width: 30px">
+                    <h2 th:text="${j.index} + 1" class="card-text text-secondary"></h2>
+                </div>
+                <div th:if="${seat} == '2'" class="card bg-primary border border-light" style="min-width: 30px">
+                    <h2 th:text="${j.index} + 1" class="card-text text-light"></h2>
+                </div>
+            </div>
+            <div class="m-1">
+                <h2 th:text="${i.size - i.index}" class="card-text text-light"></h2>
+            </div>
+        </div>
+    </div>
+</div>
