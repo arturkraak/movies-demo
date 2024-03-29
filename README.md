@@ -16,7 +16,7 @@
 ### [https://arturkraak.duckdns.org/cinema/](https://arturkraak.duckdns.org/cinema/)
 
 # Features
-| Features | Completion |
+| Feature | Completion |
 | :---: | :---: |
 | Filter Movies By Name & Genre | ✅ |
 | Movie Schedule | ❌ |
