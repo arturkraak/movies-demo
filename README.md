@@ -14,4 +14,13 @@
 
 ### Live Demo running on a Raspberry Pi 4 (using nginx proxy):
 ### [https://arturkraak.duckdns.org/cinema/](https://arturkraak.duckdns.org/cinema/)
+
+# Features
+| Features | Completion |
+| :---: | :---: |
+| Filter Movies By Name & Genre | ✅ |
+| Movie Schedule | ❌ |
+| Movie Recommendations | ❌ |
+| Seat Recommendation | ❌ |
+| Docker | ✅ |
 </div>
