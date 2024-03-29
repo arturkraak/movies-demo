@@ -8,8 +8,9 @@
 | [Java](https://www.oracle.com/java/technologies/downloads/#jdk21-windows)  | 21.0.2 2024-01-16 LTS | Programming Language |
 | [IntelliJ IDEA](https://www.jetbrains.com/idea/)  |  2023.3.6 (Ultimate Edition) | Integrated Development Environment |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 3.2.3 (Gradle - Groovy) | Java Framework |
-| [Bootstrap](https://getbootstrap.com/) | 5.3.3 | Frontend Toolkit |
+| [PostgreSQL](https://www.postgresql.org/) | 16 | Object-Relational Database |
 | [Thymeleaf](https://www.thymeleaf.org/) | 3.1.2 | HTML Templating for Java |
+| [Bootstrap](https://getbootstrap.com/) | 5.3.3 | Frontend Toolkit |
 | [HTMX](https://htmx.org/) | 1.9.11 | Frontend Framework |
 
 ### Live Demo running on a Raspberry Pi 4 (using nginx proxy):
