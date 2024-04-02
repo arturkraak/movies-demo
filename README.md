@@ -24,4 +24,18 @@
 | Movie Recommendations | ❌ |
 | Seat Recommendation | ❌ |
 | Docker | ✅ |
+
+
+# Instructions (PowerShell):
 </div>
+
+```powershell
+git clone https://github.com/arturkraak/movies-demo.git
+cd movies-demo
+./gradlew bootJar
+docker compose up
+```
+http://localhost:8081/cinema/
+
+
+
